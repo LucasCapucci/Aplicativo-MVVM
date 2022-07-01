@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthFitness.Views.CadastroExercicio">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Novo" 
+                     Order="Primary"
+                     Command="{Binding NovoExercicio}"/>
+        
+        <ToolbarItem Text="Salvar"
+                     IconImageSource="diskette"
+                     Order="Primary"
+                     Command="{Binding SalvarExercicio}"
+                     />
+    </ContentPage.ToolbarItems>
+    
+    
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#F56363" Padding="12">
+            <Label Text="{Binding ID}"/>
+
+            <Label Text="Descrição:"/>
+            <Entry  Text="{Binding Descricao}"
+                    Placeholder="Como foi o exercício?"
+                    />
+
+            <Label Text="Data:"/>
+            <DatePicker Format="dd/MM/yyyy"
+                        Date="{Binding Data}"
+                        />
+
+            <Label Text="Peso:"/>
+            <Entry Keyboard="Numeric" 
+                   Placeholder="Qual carga você utilizou?"
+                   Text="{Binding Peso}"
+                   />
+
+            <Label Text="Observações:"/>
+            <Entry Placeholder="Anotações sobre o exercício:"
+                   Text="{Binding Observacoes}"
+                   />
+        </StackLayout>
+    </ContentPage.Content>
+    
+</ContentPage>

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthFitness.Views.ListaExercicio"
+             x:Name="Pagina">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Atualizar"
+                     IconImageSource="reload"
+                     Command="{Binding AtualizarLista}"
+                     Order="Primary"/>
+    </ContentPage.ToolbarItems>
+    
+    
+    <ContentPage.Content>
+        <StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <SearchBar Placeholder="Busque por descrição:"
+                           Text="{Binding ParametroBusca}"/>
+                <Button Text="Buscar"
+                        Command="{Binding Buscar}"/>
+            </StackLayout>
+            
+            <RefreshView IsRefreshing="{Binding atualizando, Mode=OneWay}"
+                         Command="{Binding AtualizarLista}">
+                
+                <ListView BackgroundColor="#FA5555" ItemsSource="{Binding ListaExercicio}">
+                    
+                    <ListView.Header>
+                        <Grid RowDefinitions="Auto"
+                              ColumnDefinitions="*,*,*">
+                            <Label Grid.Row="0" Grid.Column="0" Text="ID"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="Descrição"/>
+                            <Label Grid.Row="0" Grid.Column="2" Text="Data"/>
+                        </Grid>
+                    </ListView.Header>
+                    
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.ContextActions>
+                                    <MenuItem Text="Detalhes" 
+                                              Command="{Binding Source={x:Reference Pagina}, 
+                                                       Path=BindingContext.AbrirDetalhesExercicio}"
+                                              CommandParameter="{Binding ID}"/>
+                                    
+                                    <MenuItem Text="Excluir"
+                                              Command="{Binding Source={x:Reference Pagina}, 
+                                                       Path=BindingContext.Remover}"
+                                              CommandParameter="{Binding ID}"/>
+                                </ViewCell.ContextActions>
+                                <Grid RowDefinitions="Auto"
+                                      ColumnDefinitions="*,*,*">
+                                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding ID}"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Descricao}"/>
+                                    <Label Grid.Row="0" Grid.Column="2" Text="{Binding Data, StringFormat='{}{0:dd/MM/yyyy}'}"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    
+                </ListView>
+                
+            </RefreshView>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

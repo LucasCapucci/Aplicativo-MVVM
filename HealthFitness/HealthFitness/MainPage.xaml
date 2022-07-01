@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:Views="clr-namespace:HealthFitness.Views"
+       x:Class="HealthFitness.MainPage">
+
+    <TabBar>
+        <Tab Title="Novos Exercicios" Icon="barbell" Route="CadastroExercicio">
+            <ShellContent>
+                <Views:CadastroExercicio Title="Cadastro de Exercícios"/>
+            </ShellContent>
+        </Tab>
+        <Tab Title="Lista Exercícios" Icon="barbell" Route="ListaExercicio">
+            <ShellContent>
+                <Views:ListaExercicio Title="Lista de Exercícios"/>
+            </ShellContent>
+        </Tab>
+        <Tab Title="Sobre" Icon="barbell" Route="Sobre">
+            <ShellContent>
+                <Views:Sobre Title="Sobre o Aplicativo"/>
+            </ShellContent>
+        </Tab>
+    </TabBar>
+</Shell>
